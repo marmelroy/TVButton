@@ -7,13 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		342AA0B31BEEC64800B1A7D9 /* TVButton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 342AA0B01BEEC63E00B1A7D9 /* TVButton.framework */; };
-		342AA0B41BEEC64800B1A7D9 /* TVButton.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 342AA0B01BEEC63E00B1A7D9 /* TVButton.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		342AA0BA1BEEC97C00B1A7D9 /* TVButtonBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 342AA0B71BEEC97C00B1A7D9 /* TVButtonBackground.png */; };
 		342AA0BB1BEEC97C00B1A7D9 /* TVButtonPattern.png in Resources */ = {isa = PBXBuildFile; fileRef = 342AA0B81BEEC97C00B1A7D9 /* TVButtonPattern.png */; };
 		342AA0BC1BEEC97C00B1A7D9 /* TVButtonTop.png in Resources */ = {isa = PBXBuildFile; fileRef = 342AA0B91BEEC97C00B1A7D9 /* TVButtonTop.png */; };
-		344D87571BDED6A200487684 /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 344D87561BDED6A200487684 /* Contacts.framework */; };
-		344D875A1BDED6A600487684 /* ContactsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 344D87591BDED6A600487684 /* ContactsUI.framework */; };
 		3472096B1BB808D1004DE6DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3472096A1BB808D1004DE6DA /* AppDelegate.swift */; };
 		3472096D1BB808D1004DE6DA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3472096C1BB808D1004DE6DA /* ViewController.swift */; };
 		347209701BB808D1004DE6DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3472096E1BB808D1004DE6DA /* Main.storyboard */; };
@@ -24,27 +20,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		342AA0AF1BEEC63E00B1A7D9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 342AA0AA1BEEC63E00B1A7D9 /* TVButton.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 342AA08C1BEEBE6F00B1A7D9;
-			remoteInfo = TVButton;
-		};
-		342AA0B11BEEC63E00B1A7D9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 342AA0AA1BEEC63E00B1A7D9 /* TVButton.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 342AA0961BEEBE6F00B1A7D9;
-			remoteInfo = TVButtonTests;
-		};
-		342AA0B51BEEC64800B1A7D9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 342AA0AA1BEEC63E00B1A7D9 /* TVButton.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 342AA08B1BEEBE6F00B1A7D9;
-			remoteInfo = TVButton;
-		};
 		3472097C1BB808D1004DE6DA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3472095F1BB808D1004DE6DA /* Project object */;
@@ -61,7 +36,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				342AA0B41BEEC64800B1A7D9 /* TVButton.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -69,12 +43,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		342AA0AA1BEEC63E00B1A7D9 /* TVButton.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TVButton.xcodeproj; path = ../../TVButton.xcodeproj; sourceTree = "<group>"; };
 		342AA0B71BEEC97C00B1A7D9 /* TVButtonBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TVButtonBackground.png; sourceTree = "<group>"; };
 		342AA0B81BEEC97C00B1A7D9 /* TVButtonPattern.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TVButtonPattern.png; sourceTree = "<group>"; };
 		342AA0B91BEEC97C00B1A7D9 /* TVButtonTop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TVButtonTop.png; sourceTree = "<group>"; };
-		344D87561BDED6A200487684 /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
-		344D87591BDED6A600487684 /* ContactsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ContactsUI.framework; path = System/Library/Frameworks/ContactsUI.framework; sourceTree = SDKROOT; };
 		347209671BB808D1004DE6DA /* Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3472096A1BB808D1004DE6DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3472096C1BB808D1004DE6DA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -93,9 +64,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				342AA0B31BEEC64800B1A7D9 /* TVButton.framework in Frameworks */,
-				344D875A1BDED6A600487684 /* ContactsUI.framework in Frameworks */,
-				344D87571BDED6A200487684 /* Contacts.framework in Frameworks */,
 				3472098E1BB80A4F004DE6DA /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -110,19 +78,9 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		342AA0AB1BEEC63E00B1A7D9 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				342AA0B01BEEC63E00B1A7D9 /* TVButton.framework */,
-				342AA0B21BEEC63E00B1A7D9 /* TVButtonTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		3472095E1BB808D1004DE6DA = {
 			isa = PBXGroup;
 			children = (
-				342AA0AA1BEEC63E00B1A7D9 /* TVButton.xcodeproj */,
 				347209691BB808D1004DE6DA /* Sample */,
 				3472097E1BB808D1004DE6DA /* SampleTests */,
 				347209681BB808D1004DE6DA /* Products */,
@@ -150,8 +108,6 @@
 				347209711BB808D1004DE6DA /* Assets.xcassets */,
 				347209731BB808D1004DE6DA /* LaunchScreen.storyboard */,
 				347209761BB808D1004DE6DA /* Info.plist */,
-				344D87591BDED6A600487684 /* ContactsUI.framework */,
-				344D87561BDED6A200487684 /* Contacts.framework */,
 				3472098D1BB80A4F004DE6DA /* Foundation.framework */,
 			);
 			path = Sample;
@@ -181,7 +137,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				342AA0B61BEEC64800B1A7D9 /* PBXTargetDependency */,
 			);
 			name = Sample;
 			productName = Sample;
@@ -235,12 +190,6 @@
 			mainGroup = 3472095E1BB808D1004DE6DA;
 			productRefGroup = 347209681BB808D1004DE6DA /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 342AA0AB1BEEC63E00B1A7D9 /* Products */;
-					ProjectRef = 342AA0AA1BEEC63E00B1A7D9 /* TVButton.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				347209661BB808D1004DE6DA /* Sample */,
@@ -248,23 +197,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		342AA0B01BEEC63E00B1A7D9 /* TVButton.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = TVButton.framework;
-			remoteRef = 342AA0AF1BEEC63E00B1A7D9 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		342AA0B21BEEC63E00B1A7D9 /* TVButtonTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = TVButtonTests.xctest;
-			remoteRef = 342AA0B11BEEC63E00B1A7D9 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		347209651BB808D1004DE6DA /* Resources */ = {
@@ -310,11 +242,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		342AA0B61BEEC64800B1A7D9 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = TVButton;
-			targetProxy = 342AA0B51BEEC64800B1A7D9 /* PBXContainerItemProxy */;
-		};
 		3472097D1BB808D1004DE6DA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 347209661BB808D1004DE6DA /* Sample */;
