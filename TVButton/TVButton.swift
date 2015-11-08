@@ -13,8 +13,14 @@ Parallax Layer Object
  
 - Image: UIImage to display. It is essential that all images have the same dimensions.
 */
-public struct ParallaxLayer {
-    public var image: UIImage?
+public struct TVButtonLayer {
+    public var internalImage: UIImage?
+}
+
+public extension TVButtonLayer {
+    public init(image: UIImage) {
+        self.init(internalImage: image)
+    }
 }
 
 /**
@@ -44,14 +50,14 @@ public class TVButton: UIButton {
         }
     }
     
-    public var layers : [ParallaxLayer]? {
+    public var layers : [TVButtonLayer]? {
         didSet {
             // Remove existing parallax layer views
             for subview in containerView.subviews {
                 subview.removeFromSuperview()
             }
             for layer in layers! {
-                let imageView = UIImageView(image: layer.image)
+                let imageView = UIImageView(image: layer.internalImage)
                 imageView.layer.cornerRadius = 5
                 imageView.clipsToBounds = true
                 containerView.addSubview(imageView)
@@ -98,6 +104,7 @@ public class TVButton: UIButton {
         self.addSubview(containerView)
         self.clipsToBounds = true
         specularView.alpha = 0.0
+        specularView.contentMode = UIViewContentMode.ScaleAspectFill
         self.shadowColor = UIColor.blackColor()
         self.layer.shadowRadius  = self.bounds.size.height/(2*shadowFactor)
         self.layer.shadowOffset  = CGSizeMake(0.0, 0.0)
@@ -131,14 +138,12 @@ public class TVButton: UIButton {
 
     
     func handleLongPress(gestureRecognizer: UIGestureRecognizer) {
-        func handlePan(gestureRecognizer: UIGestureRecognizer) {
-            if layers == nil {
-                return
-            }
-            self.highlighted = false
-            if gestureRecognizer.state == .Began {
-                self.enterMovement()
-            }
+        if layers == nil {
+            return
+        }
+        self.highlighted = false
+        if gestureRecognizer.state == .Began {
+            self.enterMovement()
         }
     }
     
@@ -222,6 +227,9 @@ public class TVButton: UIButton {
         let yRotationDegrees = (calculateTransform(point.y, dimension: self.bounds.size.height) * -1) * maxRotation
         let xTranslation = (calculateTransform(point.x, dimension: self.bounds.size.width)) * maxTranslation
         let yTranslation = (calculateTransform(point.y, dimension: self.bounds.size.height)) * maxTranslation
+        
+        let translationAverage = (calculateTransform(point.y, dimension: self.bounds.size.height) + calculateTransform(point.x, dimension: self.bounds.size.width))/2
+        print(translationAverage)
         
         let xRotateTransform = CATransform3DMakeRotation(degreesToRadians(xRotationDegrees), 1, 0, 0)
         let yRotateTransform = CATransform3DMakeRotation(degreesToRadians(yRotationDegrees), 0, 1, 0)
