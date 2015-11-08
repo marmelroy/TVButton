@@ -16,9 +16,9 @@ Import TVButton at the top of your Swift ViewController.
 import TVButton
 ```
 
-Set up your TVButton in interface builder or in code.
+Create and position your TVButton in interface builder or in code.
 
-For the parallax TVButton you will need at least two layers of images of the same dimensions (three recommended). Assign the UIImages to TVButtonLayers and build the layers array on the TVButton
+For the parallax TVButton you will need at least two layers of images (three recommended). For best results, the button and the images should all have the same dimensions. Assign the relevant UIImages to TVButtonLayers and provide them as a layers array to the TVButton.
 ```swift
 let background = TVButtonLayer(image: UIImage(named: "TVButtonBackground.png")!)
 let pattern = TVButtonLayer(image: UIImage(named: "TVButtonPattern.png")!)
