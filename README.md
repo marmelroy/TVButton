@@ -4,13 +4,13 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 # TVButton
-Recreating the cool parallax icons from Apple TV as iOS UIButtons (in Swift)
+Recreating the cool parallax icons from Apple TV as iOS UIButtons (in Swift). The effect is triggered by long pressing or dragging.
 
 ![TVButton in action](http://i.giphy.com/l0O9zc8b49oDi209y.gif)
 
 ## Usage
 
-Import TVButton at the top of the Swift file that will interact with a phone number.
+Import TVButton at the top of your Swift ViewController.
 
 ```swift
 import TVButton
@@ -44,7 +44,7 @@ To integrate TVButton into your Xcode project using Carthage, specify it in your
 github "marmelroy/TVButton"
 ```
 
-### Setting up with [CocoaPods](http://cocoapods.org/?q=PhoneNumberKit)
+### Setting up with [CocoaPods](http://cocoapods.org/?q=TVButton)
 ```ruby
 source 'https://github.com/CocoaPods/Specs.git'
 pod 'TVButton', '~> 0.1'
