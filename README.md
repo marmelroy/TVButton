@@ -25,6 +25,7 @@ let pattern = TVButtonLayer(image: UIImage(named: "TVButtonPattern.png")!)
 let top = TVButtonLayer(image: UIImage(named: "TVButtonTop.png")!)
 tvButton.layers = [background, pattern, top]
 ```
+
 Enjoy!
 
 ### Setting up with Carthage
