@@ -28,7 +28,6 @@ public extension TVButtonLayer {
  
  - layers: Provide the layers for the parallax button.
  - shadowColor: Provide the dominant colour of your background for an even better shadow.
-
  */
 public class TVButton: UIButton, UIGestureRecognizerDelegate {
     
@@ -186,6 +185,45 @@ public class TVButton: UIButton, UIGestureRecognizerDelegate {
         CATransaction.commit()
     }
     
+    func processMovement(gestureRecognizer: UIGestureRecognizer){
+        let point = gestureRecognizer.locationInView(self)
+        if (highlightMode == false) {
+            return
+        }
+        let offsetX = point.x / self.bounds.size.width
+        let offsetY = point.y / self.bounds.size.height
+        let dx = point.x - self.bounds.size.width/2
+        let dy = point.y - self.bounds.size.height/2
+        let xRotation = (dy - offsetY)*(rotateXFactor/self.bounds.size.width)
+        let yRotation = (offsetX - dx)*(rotateYFactor/self.bounds.size.width)
+        let zRotation = (xRotation + yRotation)/rotateZFactor
+        
+        let xTranslation = (-2*point.x/self.bounds.size.width)*maxTranslation
+        let yTranslation = (-2*point.y/self.bounds.size.height)*maxTranslation
+        
+        let xRotateTransform = CATransform3DMakeRotation(degreesToRadians(xRotation), 1, 0, 0)
+        let yRotateTransform = CATransform3DMakeRotation(degreesToRadians(yRotation), 0, 1, 0)
+        let zRotateTransform = CATransform3DMakeRotation(degreesToRadians(zRotation), 0, 0, 1)
+        
+        let combinedRotateTransformXY = CATransform3DConcat(xRotateTransform, yRotateTransform)
+        let combinedRotateTransformZ = CATransform3DConcat(combinedRotateTransformXY, zRotateTransform)
+        let translationTransform = CATransform3DMakeTranslation(-xTranslation, yTranslation, 0.0)
+        let combinedRotateTranslateTransform = CATransform3DConcat(combinedRotateTransformZ, translationTransform)
+        let targetScaleTransform = CATransform3DMakeScale(highlightedScale, highlightedScale, highlightedScale)
+        let combinedTransform = CATransform3DConcat(combinedRotateTranslateTransform, targetScaleTransform)
+        
+        UIView.animateWithDuration(animationDuration, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
+            self.layer.transform = combinedTransform
+            self.specularView.alpha = 0.3
+            for var i = 1; i < self.containerView.subviews.count ; i++ {
+                let subview = self.containerView.subviews[i]
+                if subview != self.specularView {
+                    subview.center = CGPointMake(self.bounds.size.width/2 + xTranslation*CGFloat(i)*0.5, self.bounds.size.height/2 + yTranslation*CGFloat(i)*0.5)
+                }
+            }
+            self.specularView.center = point
+            }, completion: nil)
+    }
     
     func exitMovement() {
         if highlightMode == false || longPressGestureRecognizer?.state == .Began || longPressGestureRecognizer?.state == .Changed || panGestureRecognizer?.state == .Began || panGestureRecognizer?.state == .Changed  {
@@ -193,7 +231,6 @@ public class TVButton: UIButton, UIGestureRecognizerDelegate {
         }
         let targetShadowOffset = CGSizeMake(0.0, shadowFactor/3)
         let targetScaleTransform = CATransform3DMakeScale(1.0, 1.0, 1.0)
-        self.layer.removeAllAnimations()
         self.specularView.layer.removeAllAnimations()
         CATransaction.begin()
         CATransaction.setCompletionBlock({ () -> Void in
@@ -228,47 +265,6 @@ public class TVButton: UIButton, UIGestureRecognizerDelegate {
     
     public func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
-    }
-    
-    func processMovement(gestureRecognizer: UIGestureRecognizer){
-        let point = gestureRecognizer.locationInView(self)
-        if (highlightMode == false) {
-            return
-        }
-        let offsetX = point.x / self.bounds.size.width
-        let offsetY = point.y / self.bounds.size.height
-        let dx = point.x - self.bounds.size.width/2
-        let dy = point.y - self.bounds.size.height/2
-        let xRotation = (dy - offsetY)*(rotateXFactor/self.bounds.size.width)
-        let yRotation = (offsetX - dx)*(rotateYFactor/self.bounds.size.width)
-        let zRotation = (xRotation + yRotation)/rotateZFactor
-
-        let xTranslation = (-2*point.x/self.bounds.size.width)*maxTranslation
-        let yTranslation = (-2*point.y/self.bounds.size.height)*maxTranslation
-        
-        let xRotateTransform = CATransform3DMakeRotation(degreesToRadians(xRotation), 1, 0, 0)
-        let yRotateTransform = CATransform3DMakeRotation(degreesToRadians(yRotation), 0, 1, 0)
-        let zRotateTransform = CATransform3DMakeRotation(degreesToRadians(zRotation), 0, 0, 1)
-
-        let combinedRotateTransformXY = CATransform3DConcat(xRotateTransform, yRotateTransform)
-        let combinedRotateTransformZ = CATransform3DConcat(combinedRotateTransformXY, zRotateTransform)
-        let translationTransform = CATransform3DMakeTranslation(-xTranslation, yTranslation, 0.0)
-        let combinedRotateTranslateTransform = CATransform3DConcat(combinedRotateTransformZ, translationTransform)
-        let targetScaleTransform = CATransform3DMakeScale(highlightedScale, highlightedScale, highlightedScale)
-        let combinedTransform = CATransform3DConcat(combinedRotateTranslateTransform, targetScaleTransform)
-
-        UIView.animateWithDuration(animationDuration, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
-            self.layer.transform = combinedTransform
-            self.specularView.alpha = 0.3
-            for var i = 1; i < self.containerView.subviews.count ; i++ {
-                let subview = self.containerView.subviews[i]
-                if subview != self.specularView {
-                    subview.center = CGPointMake(self.bounds.size.width/2 + xTranslation*CGFloat(i)*0.5, self.bounds.size.height/2 + yTranslation*CGFloat(i)*0.5)
-                }
-            }
-            self.specularView.center = point
-        }, completion: nil)
-
     }
     
     // MARK: Convenience
