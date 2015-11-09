@@ -26,6 +26,13 @@ let top = TVButtonLayer(image: UIImage(named: "TVButtonTop.png")!)
 tvButton.layers = [background, pattern, top]
 ```
 
+You can customize the parallax intensity of your TVButton. Default value is 0.6 and it's very subtle. Maximum recommended value is 2.0.
+```swift
+tvButton.parallaxIntensity = 1.3
+```
+
+![Star WarsTVButton](http://i.giphy.com/YrwxJVIAbZNTy.gif)
+
 Enjoy!
 
 ### Setting up with Carthage
