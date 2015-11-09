@@ -28,6 +28,7 @@ public extension TVButtonLayer {
  
  - layers: Provide the layers for the parallax button.
  - shadowColor: Provide the dominant colour of your background for an even better shadow.
+ - parallaxIntensity: A value between 0 and 2 (the subtle default is 0.6). Change for a more pronounced parallax effect.
  */
 public class TVButton: UIButton, UIGestureRecognizerDelegate {
     
@@ -53,6 +54,8 @@ public class TVButton: UIButton, UIGestureRecognizerDelegate {
             self.layer.shadowColor = shadowColor!.CGColor
         }
     }
+    
+    public var parallaxIntensity : CGFloat = 0.6
     
     public var layers : [TVButtonLayer]? {
         didSet {
@@ -215,14 +218,14 @@ public class TVButton: UIButton, UIGestureRecognizerDelegate {
         UIView.animateWithDuration(animationDuration, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
             self.layer.transform = combinedTransform
             self.specularView.alpha = 0.3
-            for var i = 1; i < self.containerView.subviews.count ; i++ {
-                let subview = self.containerView.subviews[i]
-                if subview != self.specularView {
-                    subview.center = CGPointMake(self.bounds.size.width/2 + xTranslation*CGFloat(i)*0.6, self.bounds.size.height/2 + yTranslation*CGFloat(i)*0.6)
-                }
-            }
             self.specularView.center = point
             }, completion: nil)
+        for var i = 1; i < self.containerView.subviews.count ; i++ {
+            let subview = self.containerView.subviews[i]
+            if subview != self.specularView {
+                subview.center = CGPointMake(self.bounds.size.width/2 + xTranslation*CGFloat(i)*self.parallaxIntensity, self.bounds.size.height/2 + yTranslation*CGFloat(i)*self.parallaxIntensity)
+            }
+        }
     }
     
     func exitMovement() {
