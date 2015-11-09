@@ -6,7 +6,7 @@
 # TVButton
 Recreating the cool parallax icons from Apple TV as iOS UIButtons (in Swift). The effect is triggered by long pressing or dragging.
 
-![TVButton - Star Wars](http://i.giphy.com/3o85xlpVwTU0mOMQ5q.gif)
+![TVButton in action](http://i.giphy.com/3o85xlpVwTU0mOMQ5q.gif)
 
 ## Usage
 

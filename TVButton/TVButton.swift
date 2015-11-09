@@ -218,7 +218,7 @@ public class TVButton: UIButton, UIGestureRecognizerDelegate {
             for var i = 1; i < self.containerView.subviews.count ; i++ {
                 let subview = self.containerView.subviews[i]
                 if subview != self.specularView {
-                    subview.center = CGPointMake(self.bounds.size.width/2 + xTranslation*CGFloat(i)*0.5, self.bounds.size.height/2 + yTranslation*CGFloat(i)*0.5)
+                    subview.center = CGPointMake(self.bounds.size.width/2 + xTranslation*CGFloat(i)*0.6, self.bounds.size.height/2 + yTranslation*CGFloat(i)*0.6)
                 }
             }
             self.specularView.center = point
