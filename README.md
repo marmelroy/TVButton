@@ -6,7 +6,7 @@
 # TVButton
 Recreating the cool parallax icons from Apple TV as iOS UIButtons (in Swift). The effect is triggered by long pressing or dragging.
 
-![TVButton in action](http://i.giphy.com/l0O9zc8b49oDi209y.gif)
+![Star Wars TVButton](http://i.giphy.com/xTiTncTXLbQjJOecBa.gif)
 
 ## Usage
 
@@ -31,9 +31,15 @@ You can customize the parallax intensity of your TVButton. Default value is 1.0 
 tvButton.parallaxIntensity = 1.3
 ```
 
-![Star WarsTVButton](http://i.giphy.com/YrwxJVIAbZNTy.gif)
+![TVButton in action](http://i.giphy.com/l0O9zc8b49oDi209y.gif)
 
 Enjoy!
+
+### Setting up with [CocoaPods](http://cocoapods.org/?q=TVButton)
+```ruby
+source 'https://github.com/CocoaPods/Specs.git'
+pod 'TVButton', '~> 0.1'
+```
 
 ### Setting up with Carthage
 
@@ -50,10 +56,4 @@ To integrate TVButton into your Xcode project using Carthage, specify it in your
 
 ```ogdl
 github "marmelroy/TVButton"
-```
-
-### Setting up with [CocoaPods](http://cocoapods.org/?q=TVButton)
-```ruby
-source 'https://github.com/CocoaPods/Specs.git'
-pod 'TVButton', '~> 0.1'
 ```
