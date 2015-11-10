@@ -12,6 +12,8 @@
 		342AA09C1BEEBE6F00B1A7D9 /* TVButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342AA09B1BEEBE6F00B1A7D9 /* TVButtonTests.swift */; };
 		342AA0A71BEEBF6E00B1A7D9 /* TVButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342AA0A61BEEBF6E00B1A7D9 /* TVButton.swift */; };
 		342AA0A91BEEBF7500B1A7D9 /* Specular.png in Resources */ = {isa = PBXBuildFile; fileRef = 342AA0A81BEEBF7500B1A7D9 /* Specular.png */; };
+		34F374BE1BF1B0890085BE13 /* TVButtonAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F374BD1BF1B0890085BE13 /* TVButtonAnimation.swift */; };
+		34F374C01BF1B0E60085BE13 /* TVButtonConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F374BF1BF1B0E60085BE13 /* TVButtonConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +35,8 @@
 		342AA09D1BEEBE6F00B1A7D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		342AA0A61BEEBF6E00B1A7D9 /* TVButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVButton.swift; sourceTree = "<group>"; };
 		342AA0A81BEEBF7500B1A7D9 /* Specular.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Specular.png; sourceTree = "<group>"; };
+		34F374BD1BF1B0890085BE13 /* TVButtonAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVButtonAnimation.swift; sourceTree = "<group>"; };
+		34F374BF1BF1B0E60085BE13 /* TVButtonConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVButtonConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +81,8 @@
 			children = (
 				342AA08F1BEEBE6F00B1A7D9 /* TVButton.h */,
 				342AA0A61BEEBF6E00B1A7D9 /* TVButton.swift */,
+				34F374BD1BF1B0890085BE13 /* TVButtonAnimation.swift */,
+				34F374BF1BF1B0E60085BE13 /* TVButtonConstants.swift */,
 				342AA0A81BEEBF7500B1A7D9 /* Specular.png */,
 				342AA0911BEEBE6F00B1A7D9 /* Info.plist */,
 			);
@@ -201,6 +207,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34F374C01BF1B0E60085BE13 /* TVButtonConstants.swift in Sources */,
+				34F374BE1BF1B0890085BE13 /* TVButtonAnimation.swift in Sources */,
 				342AA0A71BEEBF6E00B1A7D9 /* TVButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
