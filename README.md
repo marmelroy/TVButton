@@ -1,4 +1,4 @@
-![TVButton](https://cloud.githubusercontent.com/assets/889949/11019657/a9860bd2-8602-11e5-8a1a-659cad3cd4c7.png)
+![TVButton - Apple TV Parallax icons on iOS](https://cloud.githubusercontent.com/assets/889949/11056724/edbe773e-8784-11e5-8b2e-f6c76a9b739b.png)
 
 [![Build Status](https://travis-ci.org/marmelroy/TVButton.svg?branch=master)](https://travis-ci.org/marmelroy/TVButton) [![Version](http://img.shields.io/cocoapods/v/TVButton.svg)](http://cocoapods.org/?q=TVButton)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
