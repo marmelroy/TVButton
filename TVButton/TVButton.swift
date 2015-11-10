@@ -46,7 +46,7 @@ public class TVButton: UIButton, UIGestureRecognizerDelegate {
         }
     }
     
-    public var parallaxIntensity : CGFloat = 0.6
+    public var parallaxIntensity : CGFloat = 0.7
     
     public var layers : [TVButtonLayer]? {
         didSet {
@@ -122,11 +122,9 @@ public class TVButton: UIButton, UIGestureRecognizerDelegate {
     
     // MARK: UIGestureRecognizer Actions
     
-    
     func handlePan(gestureRecognizer: UIGestureRecognizer) {
         self.gestureRecognizerDidUpdate(gestureRecognizer)
     }
-
     
     func handleLongPress(gestureRecognizer: UIGestureRecognizer) {
         self.gestureRecognizerDidUpdate(gestureRecognizer)

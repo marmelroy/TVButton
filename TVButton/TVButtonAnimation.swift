@@ -75,7 +75,7 @@ class TVButtonAnimation {
             for var i = 1; i < tvButton.containerView.subviews.count ; i++ {
                 let subview = tvButton.containerView.subviews[i]
                 if subview != tvButton.specularView {
-                    subview.center = CGPointMake(tvButton.bounds.size.width/2 + xTranslation*CGFloat(i)*tvButton.parallaxIntensity, tvButton.bounds.size.height/2 + yTranslation*CGFloat(i)*tvButton.parallaxIntensity)
+                    subview.center = CGPointMake(tvButton.bounds.size.width/2 + xTranslation*CGFloat(i)*tvButton.parallaxIntensity*parallaxIntensityXFactor, tvButton.bounds.size.height/2 + yTranslation*CGFloat(i)*tvButton.parallaxIntensity)
                 }
             }
         }

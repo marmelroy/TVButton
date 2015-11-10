@@ -25,3 +25,5 @@ let highlightedScale: CGFloat = 1.17
 let shadowFactor: CGFloat = 12
 
 let cornerRadius: CGFloat = 5
+
+let parallaxIntensityXFactor: CGFloat = 0.6

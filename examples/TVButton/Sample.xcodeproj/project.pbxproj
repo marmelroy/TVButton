@@ -17,6 +17,8 @@
 		347209751BB808D1004DE6DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 347209731BB808D1004DE6DA /* LaunchScreen.storyboard */; };
 		347209801BB808D1004DE6DA /* SampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3472097F1BB808D1004DE6DA /* SampleTests.swift */; };
 		3472098E1BB80A4F004DE6DA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3472098D1BB80A4F004DE6DA /* Foundation.framework */; };
+		34F374CA1BF1B5F20085BE13 /* TVButton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34F374C71BF1B5E80085BE13 /* TVButton.framework */; };
+		34F374CB1BF1B5F20085BE13 /* TVButton.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 34F374C71BF1B5E80085BE13 /* TVButton.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +29,27 @@
 			remoteGlobalIDString = 347209661BB808D1004DE6DA;
 			remoteInfo = Sample;
 		};
+		34F374C61BF1B5E80085BE13 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 34F374C11BF1B5E80085BE13 /* TVButton.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 342AA08C1BEEBE6F00B1A7D9;
+			remoteInfo = TVButton;
+		};
+		34F374C81BF1B5E80085BE13 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 34F374C11BF1B5E80085BE13 /* TVButton.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 342AA0961BEEBE6F00B1A7D9;
+			remoteInfo = TVButtonTests;
+		};
+		34F374CC1BF1B5F20085BE13 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 34F374C11BF1B5E80085BE13 /* TVButton.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 342AA08B1BEEBE6F00B1A7D9;
+			remoteInfo = TVButton;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -36,6 +59,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				34F374CB1BF1B5F20085BE13 /* TVButton.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -57,6 +81,7 @@
 		3472097F1BB808D1004DE6DA /* SampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleTests.swift; sourceTree = "<group>"; };
 		347209811BB808D1004DE6DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3472098D1BB80A4F004DE6DA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		34F374C11BF1B5E80085BE13 /* TVButton.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TVButton.xcodeproj; path = ../../TVButton.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34F374CA1BF1B5F20085BE13 /* TVButton.framework in Frameworks */,
 				3472098E1BB80A4F004DE6DA /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -81,6 +107,7 @@
 		3472095E1BB808D1004DE6DA = {
 			isa = PBXGroup;
 			children = (
+				34F374C11BF1B5E80085BE13 /* TVButton.xcodeproj */,
 				347209691BB808D1004DE6DA /* Sample */,
 				3472097E1BB808D1004DE6DA /* SampleTests */,
 				347209681BB808D1004DE6DA /* Products */,
@@ -122,6 +149,15 @@
 			path = SampleTests;
 			sourceTree = "<group>";
 		};
+		34F374C21BF1B5E80085BE13 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				34F374C71BF1B5E80085BE13 /* TVButton.framework */,
+				34F374C91BF1B5E80085BE13 /* TVButtonTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -137,6 +173,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				34F374CD1BF1B5F20085BE13 /* PBXTargetDependency */,
 			);
 			name = Sample;
 			productName = Sample;
@@ -190,6 +227,12 @@
 			mainGroup = 3472095E1BB808D1004DE6DA;
 			productRefGroup = 347209681BB808D1004DE6DA /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 34F374C21BF1B5E80085BE13 /* Products */;
+					ProjectRef = 34F374C11BF1B5E80085BE13 /* TVButton.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				347209661BB808D1004DE6DA /* Sample */,
@@ -197,6 +240,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		34F374C71BF1B5E80085BE13 /* TVButton.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = TVButton.framework;
+			remoteRef = 34F374C61BF1B5E80085BE13 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		34F374C91BF1B5E80085BE13 /* TVButtonTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = TVButtonTests.xctest;
+			remoteRef = 34F374C81BF1B5E80085BE13 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		347209651BB808D1004DE6DA /* Resources */ = {
@@ -246,6 +306,11 @@
 			isa = PBXTargetDependency;
 			target = 347209661BB808D1004DE6DA /* Sample */;
 			targetProxy = 3472097C1BB808D1004DE6DA /* PBXContainerItemProxy */;
+		};
+		34F374CD1BF1B5F20085BE13 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = TVButton;
+			targetProxy = 34F374CC1BF1B5F20085BE13 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
