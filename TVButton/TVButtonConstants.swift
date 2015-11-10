@@ -10,20 +10,23 @@ import Foundation
 
 let animationDuration: Double = 0.4
 
+let cornerRadius: CGFloat = 5
+
+let defaultParallaxIntensity: CGFloat = 1.0
+
+let highlightedScale: CGFloat = 1.17
+
+let maxTranslation: CGFloat = 2
+
+let parallaxIntensityXFactor: CGFloat = 0.5
+let parallaxIntensityYFactor: CGFloat = 0.7
+
 let rotateYFactor: CGFloat = 16
 
 let rotateXFactor: CGFloat = 20
 
 let rotateZFactor: CGFloat = 9
 
-let maxTranslation: CGFloat = 2
-
-let specularScale: CGFloat = 2.0
-
-let highlightedScale: CGFloat = 1.17
-
 let shadowFactor: CGFloat = 12
 
-let cornerRadius: CGFloat = 5
-
-let parallaxIntensityXFactor: CGFloat = 0.6
+let specularScale: CGFloat = 1.7

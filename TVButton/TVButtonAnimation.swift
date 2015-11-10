@@ -8,6 +8,9 @@
 
 import Foundation
 
+/**
+TVButtonAnimation class
+ */
 class TVButtonAnimation {
     
     var highlightMode: Bool = false
@@ -17,6 +20,7 @@ class TVButtonAnimation {
         self.button = button
     }
     
+    // Movement begins
     func enterMovement() {
         if highlightMode == true {
             return
@@ -40,6 +44,7 @@ class TVButtonAnimation {
         }
     }
     
+    // Movement continues
     func processMovement(point: CGPoint){
         if (highlightMode == false) {
             return
@@ -75,12 +80,13 @@ class TVButtonAnimation {
             for var i = 1; i < tvButton.containerView.subviews.count ; i++ {
                 let subview = tvButton.containerView.subviews[i]
                 if subview != tvButton.specularView {
-                    subview.center = CGPointMake(tvButton.bounds.size.width/2 + xTranslation*CGFloat(i)*tvButton.parallaxIntensity*parallaxIntensityXFactor, tvButton.bounds.size.height/2 + yTranslation*CGFloat(i)*tvButton.parallaxIntensity)
+                    subview.center = CGPointMake(tvButton.bounds.size.width/2 + xTranslation*CGFloat(i)*tvButton.parallaxIntensity*parallaxIntensityXFactor, tvButton.bounds.size.height/2 + yTranslation*CGFloat(i)*tvButton.parallaxIntensity*parallaxIntensityYFactor)
                 }
             }
         }
     }
     
+    // Movement ends
     func exitMovement() {
         if highlightMode == false {
             return

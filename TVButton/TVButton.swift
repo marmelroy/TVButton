@@ -7,14 +7,15 @@
 //
 
 import Foundation
+import CoreMotion
 
 /**
 Parallax Layer Object
  
-- Image: UIImage to display. It is essential that all images have the same dimensions.
+- image: UIImage to display. It is essential that all images have the same dimensions.
 */
 public struct TVButtonLayer {
-    public var internalImage: UIImage?
+    var internalImage: UIImage?
 }
 
 public extension TVButtonLayer {
@@ -28,42 +29,50 @@ public extension TVButtonLayer {
  
  - layers: Provide the layers for the parallax button.
  - shadowColor: Provide the dominant colour of your background for an even better shadow.
- - parallaxIntensity: A value between 0 and 2 (the subtle default is 0.6). Change for a more pronounced parallax effect.
+ - parallaxIntensity: A value between 0 and 2 (the subtle default is 1.0). Change for a more pronounced parallax effect.
  */
 public class TVButton: UIButton, UIGestureRecognizerDelegate {
     
-    var specularView = UIImageView()
+    // MARK: Internal variables
     var containerView = UIView()
-    var panGestureRecognizer: UIPanGestureRecognizer?
-    var tapGestureRecognizer: UITapGestureRecognizer?
     var longPressGestureRecognizer: UILongPressGestureRecognizer?
-    
+    var motionManager: CMMotionManager?
+    var panGestureRecognizer: UIPanGestureRecognizer?
+    var specularView = UIImageView()
+    var tapGestureRecognizer: UITapGestureRecognizer?
     var tvButtonAnimation: TVButtonAnimation?
     
-    public var shadowColor : UIColor? {
-        didSet {
-            self.layer.shadowColor = shadowColor!.CGColor
-        }
-    }
+    // MARK: Public variables
     
-    public var parallaxIntensity : CGFloat = 0.7
-    
-    public var layers : [TVButtonLayer]? {
+    // Build the stack of TVButton layers inside the button
+    public var layers: [TVButtonLayer]? {
         didSet {
             // Remove existing parallax layer views
             for subview in containerView.subviews {
                 subview.removeFromSuperview()
             }
+            // Instantiate an imageview with corners for every layer
             for layer in layers! {
                 let imageView = UIImageView(image: layer.internalImage)
                 imageView.layer.cornerRadius = cornerRadius
                 imageView.clipsToBounds = true
                 containerView.addSubview(imageView)
             }
+            // Add specular shine effect
             let frameworkBundle = NSBundle(forClass: TVButton.self)
             let specularViewPath = frameworkBundle.pathForResource("Specular", ofType: "png")
             specularView.image = UIImage(contentsOfFile:specularViewPath!)
             self.containerView.addSubview(specularView)
+        }
+    }
+
+    // This value determines the intensity of the parallax depth effect.
+    public var parallaxIntensity: CGFloat = defaultParallaxIntensity
+
+    // For closer approximation of the Apple TV icons, set this to a darker version of the dominant colour in the button
+    public var shadowColor: UIColor = UIColor.blackColor() {
+        didSet {
+            self.layer.shadowColor = shadowColor.CGColor
         }
     }
     
@@ -105,7 +114,6 @@ public class TVButton: UIButton, UIGestureRecognizerDelegate {
         self.clipsToBounds = true
         specularView.alpha = 0.0
         specularView.contentMode = UIViewContentMode.ScaleAspectFill
-        self.shadowColor = UIColor.blackColor()
         self.layer.shadowRadius = self.bounds.size.height/(2*shadowFactor)
         self.layer.shadowOffset = CGSizeMake(0.0, shadowFactor/3)
         self.layer.shadowOpacity = 0.5;
@@ -120,7 +128,7 @@ public class TVButton: UIButton, UIGestureRecognizerDelegate {
         tvButtonAnimation = TVButtonAnimation(button: self)
     }
     
-    // MARK: UIGestureRecognizer Actions
+    // MARK: UIGestureRecognizer actions and delegate
     
     func handlePan(gestureRecognizer: UIGestureRecognizer) {
         self.gestureRecognizerDidUpdate(gestureRecognizer)
@@ -156,13 +164,10 @@ public class TVButton: UIButton, UIGestureRecognizerDelegate {
         }
     }
     
-    
     // MARK: Animations
-    
     
     public func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
-    
     
 }

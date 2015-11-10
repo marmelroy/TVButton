@@ -79,11 +79,9 @@
 		342AA08E1BEEBE6F00B1A7D9 /* TVButton */ = {
 			isa = PBXGroup;
 			children = (
+				34F374CE1BF1B7EE0085BE13 /* Sources */,
+				34F374CF1BF1B7F30085BE13 /* Resources */,
 				342AA08F1BEEBE6F00B1A7D9 /* TVButton.h */,
-				342AA0A61BEEBF6E00B1A7D9 /* TVButton.swift */,
-				34F374BD1BF1B0890085BE13 /* TVButtonAnimation.swift */,
-				34F374BF1BF1B0E60085BE13 /* TVButtonConstants.swift */,
-				342AA0A81BEEBF7500B1A7D9 /* Specular.png */,
 				342AA0911BEEBE6F00B1A7D9 /* Info.plist */,
 			);
 			path = TVButton;
@@ -96,6 +94,24 @@
 				342AA09D1BEEBE6F00B1A7D9 /* Info.plist */,
 			);
 			path = TVButtonTests;
+			sourceTree = "<group>";
+		};
+		34F374CE1BF1B7EE0085BE13 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				342AA0A61BEEBF6E00B1A7D9 /* TVButton.swift */,
+				34F374BD1BF1B0890085BE13 /* TVButtonAnimation.swift */,
+				34F374BF1BF1B0E60085BE13 /* TVButtonConstants.swift */,
+			);
+			name = Sources;
+			sourceTree = "<group>";
+		};
+		34F374CF1BF1B7F30085BE13 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				342AA0A81BEEBF7500B1A7D9 /* Specular.png */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
