@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import CoreMotion
 
 /**
 Parallax Layer Object
