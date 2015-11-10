@@ -35,7 +35,6 @@ public class TVButton: UIButton, UIGestureRecognizerDelegate {
     // MARK: Internal variables
     var containerView = UIView()
     var longPressGestureRecognizer: UILongPressGestureRecognizer?
-    var motionManager: CMMotionManager?
     var panGestureRecognizer: UIPanGestureRecognizer?
     var specularView = UIImageView()
     var tapGestureRecognizer: UITapGestureRecognizer?
