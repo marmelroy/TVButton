@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -13,15 +14,16 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mIx-Ll-vEJ" customClass="TVButton" customModule="TVButton">
-                                <rect key="frame" x="150" y="100" width="300" height="400"/>
+                                <rect key="frame" x="239" y="60" width="190.5" height="254"/>
                                 <animations/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="400" id="Wgn-mp-ySS"/>
-                                    <constraint firstAttribute="width" constant="300" id="vfJ-Ua-NkJ"/>
+                                    <constraint firstAttribute="width" secondItem="mIx-Ll-vEJ" secondAttribute="height" multiplier="3:4" id="83H-8f-9Kz"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="400" id="Wgn-mp-ySS"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="vfJ-Ua-NkJ"/>
                                 </constraints>
                             </button>
                         </subviews>
@@ -30,11 +32,12 @@
                         <constraints>
                             <constraint firstItem="mIx-Ll-vEJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="44M-Im-68z"/>
                             <constraint firstItem="mIx-Ll-vEJ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="VrG-um-aZe"/>
+                            <constraint firstItem="mIx-Ll-vEJ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" priority="750" constant="40" id="og7-RM-Op0"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="P0S-zy-0mC"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="600" height="600"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="tvButton" destination="mIx-Ll-vEJ" id="PIS-RU-CvJ"/>
                     </connections>
