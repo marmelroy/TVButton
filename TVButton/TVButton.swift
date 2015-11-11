@@ -54,6 +54,7 @@ public class TVButton: UIButton, UIGestureRecognizerDelegate {
                 let imageView = UIImageView(image: layer.internalImage)
                 imageView.layer.cornerRadius = cornerRadius
                 imageView.clipsToBounds = true
+                imageView.layer.needsDisplayOnBoundsChange = true
                 containerView.addSubview(imageView)
             }
             // Add specular shine effect
@@ -89,6 +90,17 @@ public class TVButton: UIButton, UIGestureRecognizerDelegate {
     override public func layoutSubviews() {
         super.layoutSubviews()
         containerView.frame = self.bounds
+        self.layer.masksToBounds = false;
+        let shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: cornerRadius)
+        self.layer.shadowPath = shadowPath.CGPath
+
+        // Stop here if animation is on
+        if let animation = tvButtonAnimation {
+            if animation.highlightMode == true {
+                return
+            }
+        }
+        
         // Adjust size for every subview
         for subview in containerView.subviews {
             if subview == specularView {
@@ -98,9 +110,6 @@ public class TVButton: UIButton, UIGestureRecognizerDelegate {
                 subview.frame = CGRect(origin: subview.frame.origin, size: containerView.frame.size)
             }
         }
-        self.layer.masksToBounds = false;
-        let shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: cornerRadius)
-        self.layer.shadowPath = shadowPath.CGPath
     }
     
     

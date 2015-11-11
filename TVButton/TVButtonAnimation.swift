@@ -13,7 +13,11 @@ TVButtonAnimation class
  */
 class TVButtonAnimation {
     
-    var highlightMode: Bool = false
+    var highlightMode: Bool = false {
+        didSet {
+        
+        }
+    }
     var button: TVButton?
 
     init(button: TVButton) {
@@ -41,6 +45,7 @@ class TVButtonAnimation {
             shaowOffsetAnimation.timingFunction = CAMediaTimingFunction(name: "easeOut")
             tvButton.layer.addAnimation(shaowOffsetAnimation, forKey: "shadowOffset")
             CATransaction.commit()
+
         }
     }
     
@@ -74,12 +79,15 @@ class TVButtonAnimation {
             
             UIView.animateWithDuration(animationDuration, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
                 tvButton.layer.transform = combinedTransform
-                tvButton.specularView.alpha = 0.3
+                tvButton.specularView.alpha = specularAlpha
                 tvButton.specularView.center = point
                 }, completion: nil)
             for var i = 1; i < tvButton.containerView.subviews.count ; i++ {
+                let scale = 1 + maxScaleDelta*CGFloat(i)/CGFloat(tvButton.containerView.subviews.count)
                 let subview = tvButton.containerView.subviews[i]
                 if subview != tvButton.specularView {
+                    subview.contentMode = UIViewContentMode.Redraw
+                    subview.frame.size = CGSizeMake(tvButton.bounds.size.width*scale, tvButton.bounds.size.height*scale)
                     subview.center = CGPointMake(tvButton.bounds.size.width/2 + xTranslation*CGFloat(i)*tvButton.parallaxIntensity*parallaxIntensityXFactor, tvButton.bounds.size.height/2 + yTranslation*CGFloat(i)*tvButton.parallaxIntensity*parallaxIntensityYFactor)
                 }
             }
@@ -121,6 +129,7 @@ class TVButtonAnimation {
                 tvButton.specularView.alpha = 0.0
                 for var i = 0; i < tvButton.containerView.subviews.count ; i++ {
                     let subview = tvButton.containerView.subviews[i]
+                    subview.frame.size = CGSizeMake(tvButton.bounds.size.width, tvButton.bounds.size.height)
                     subview.center = CGPointMake(tvButton.bounds.size.width/2, tvButton.bounds.size.height/2)
                 }
                 }, completion:nil)
