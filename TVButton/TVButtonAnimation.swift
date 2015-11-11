@@ -11,7 +11,7 @@ import Foundation
 /**
 TVButtonAnimation class
  */
-class TVButtonAnimation {
+internal class TVButtonAnimation {
     
     var highlightMode: Bool = false {
         didSet {
