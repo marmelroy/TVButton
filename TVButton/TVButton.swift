@@ -136,6 +136,7 @@ public class TVButton: UIButton, UIGestureRecognizerDelegate {
         self.layer.shadowOffset = CGSizeMake(0.0, shadowFactor/3)
         self.layer.shadowOpacity = 0.5;
         tvButtonAnimation = TVButtonAnimation(button: self)
+        self.addGestureRecognizers()
     }
     
     
