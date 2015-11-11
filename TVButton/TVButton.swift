@@ -10,14 +10,17 @@ import Foundation
 
 /**
 Parallax Layer Object
- 
-- image: UIImage to display. It is essential that all images have the same dimensions.
 */
 public struct TVButtonLayer {
+    /// UIImage to display. It is essential that all images have the same dimensions.
     var internalImage: UIImage?
 }
 
 public extension TVButtonLayer {
+    /**
+     Initialise the TVButton layer by passing a UIImage
+     - Parameter image: UIImage to display. It is essential that all images have the same dimensions.
+     */
     public init(image: UIImage) {
         self.init(internalImage: image)
     }
@@ -25,24 +28,21 @@ public extension TVButtonLayer {
 
 /**
  TVButton Object
- 
- - layers: Provide the layers for the parallax button.
- - shadowColor: Provide the dominant colour of your background for an even better shadow.
- - parallaxIntensity: A value between 0 and 2 (the subtle default is 1.0). Change for a more pronounced parallax effect.
  */
 public class TVButton: UIButton, UIGestureRecognizerDelegate {
     
     // MARK: Internal variables
-    var containerView = UIView()
-    var longPressGestureRecognizer: UILongPressGestureRecognizer?
-    var panGestureRecognizer: UIPanGestureRecognizer?
-    var specularView = UIImageView()
-    var tapGestureRecognizer: UITapGestureRecognizer?
-    var tvButtonAnimation: TVButtonAnimation?
+    internal var containerView = UIView()
+    internal var specularView = UIImageView()
+    internal var tvButtonAnimation: TVButtonAnimation?
+    
+    internal var longPressGestureRecognizer: UILongPressGestureRecognizer?
+    internal var panGestureRecognizer: UIPanGestureRecognizer?
+    internal var tapGestureRecognizer: UITapGestureRecognizer?
     
     // MARK: Public variables
     
-    // Build the stack of TVButton layers inside the button
+    /// Stack of TVButtonLayers inside the button
     public var layers: [TVButtonLayer]? {
         didSet {
             // Remove existing parallax layer views
@@ -65,10 +65,10 @@ public class TVButton: UIButton, UIGestureRecognizerDelegate {
         }
     }
 
-    // This value determines the intensity of the parallax depth effect.
+    /// Determines the intensity of the parallax depth effect. Default is 1.0.
     public var parallaxIntensity: CGFloat = defaultParallaxIntensity
 
-    // For closer approximation of the Apple TV icons, set this to a darker version of the dominant colour in the button
+    /// Shadow color for the TVButton. Default is black.
     public var shadowColor: UIColor = UIColor.blackColor() {
         didSet {
             self.layer.shadowColor = shadowColor.CGColor
@@ -77,16 +77,25 @@ public class TVButton: UIButton, UIGestureRecognizerDelegate {
     
     // MARK: Lifecycle
     
+    /**
+    Default init for TVObject with coder.
+    */
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
     }
     
+    /**
+     Default init for TVObject with frame.
+     */
     override public init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
     
+    /**
+     Lays out subviews.
+     */
     override public func layoutSubviews() {
         super.layoutSubviews()
         containerView.frame = self.bounds
@@ -112,7 +121,9 @@ public class TVButton: UIButton, UIGestureRecognizerDelegate {
         }
     }
     
-    
+    /**
+     Button setup. Conducted on init.
+    */
     func setup() {
         containerView.userInteractionEnabled = false
         self.addSubview(containerView)
@@ -124,6 +135,16 @@ public class TVButton: UIButton, UIGestureRecognizerDelegate {
         self.layer.shadowRadius = self.bounds.size.height/(2*shadowFactor)
         self.layer.shadowOffset = CGSizeMake(0.0, shadowFactor/3)
         self.layer.shadowOpacity = 0.5;
+        tvButtonAnimation = TVButtonAnimation(button: self)
+    }
+    
+    
+    // MARK: UIGestureRecognizer actions and delegate
+    
+    /**
+    Adds the gesture recognizers to the button.
+    */
+    func addGestureRecognizers(){
         panGestureRecognizer = UIPanGestureRecognizer(target: self, action: "handlePan:")
         panGestureRecognizer?.delegate = self
         self.addGestureRecognizer(panGestureRecognizer!)
@@ -132,23 +153,36 @@ public class TVButton: UIButton, UIGestureRecognizerDelegate {
         longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: "handleLongPress:")
         longPressGestureRecognizer?.delegate = self
         self.addGestureRecognizer(longPressGestureRecognizer!)
-        tvButtonAnimation = TVButtonAnimation(button: self)
     }
     
-    // MARK: UIGestureRecognizer actions and delegate
-    
+    /**
+     Pan gesture recognizer handler.
+     - Parameter gestureRecognizer: TVButton's UIPanGestureRecognizer.
+     */
     func handlePan(gestureRecognizer: UIGestureRecognizer) {
         self.gestureRecognizerDidUpdate(gestureRecognizer)
     }
     
+    /**
+     Long press gesture recognizer handler.
+     - Parameter gestureRecognizer: TVButton's UILongPressGestureRecognizer.
+     */
     func handleLongPress(gestureRecognizer: UIGestureRecognizer) {
         self.gestureRecognizerDidUpdate(gestureRecognizer)
     }
     
+    /**
+     Tap gesture recognizer handler. Sends TouchUpInside to super.
+     - Parameter gestureRecognizer: TVButton's UITapGestureRecognizer.
+     */
     func handleTap(gestureRecognizer: UIGestureRecognizer) {
         super.sendActionsForControlEvents(UIControlEvents.TouchUpInside)
     }
     
+    /**
+     Determines button's reaction to gesturerecognizer.
+     - Parameter gestureRecognizer: either UITapGestureRecognizer or UILongPressGestureRecognizer.
+     */
     func gestureRecognizerDidUpdate(gestureRecognizer: UIGestureRecognizer){
         if layers == nil {
             return
@@ -163,7 +197,7 @@ public class TVButton: UIButton, UIGestureRecognizerDelegate {
                 animation.processMovement(point)
             }
             else {
-                if longPressGestureRecognizer?.state == .Began || longPressGestureRecognizer?.state == .Changed || panGestureRecognizer?.state == .Began || panGestureRecognizer?.state == .Changed {
+                if gestureRecognizer.state == .Began || gestureRecognizer.state == .Changed {
                     return
                 }
                 animation.exitMovement()
@@ -171,8 +205,13 @@ public class TVButton: UIButton, UIGestureRecognizerDelegate {
         }
     }
     
-    // MARK: Animations
+    // MARK: UIGestureRecognizerDelegate
     
+    /**
+    UIGestureRecognizerDelegate function to allow two UIGestureRecognizers to be recognized simultaneously.
+    - Parameter gestureRecognizer: First gestureRecognizer.
+    - Parameter otherGestureRecognizer: Second gestureRecognizer.
+    */
     public func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
