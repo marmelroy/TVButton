@@ -1,5 +1,8 @@
 # Change Log
 
+## [0.1.5](https://github.com/marmelroy/TVButton/tree/0.1.5) (2015-11-12)
+[Full Changelog](https://github.com/marmelroy/TVButton/compare/0.1.4...0.1.5)
+
 ## [0.1.4](https://github.com/marmelroy/TVButton/tree/0.1.4) (2015-11-11)
 [Full Changelog](https://github.com/marmelroy/TVButton/compare/0.1.3...0.1.4)
 
