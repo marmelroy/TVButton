@@ -21,7 +21,7 @@ class ViewController: UIViewController {
         let top = TVButtonLayer(image: UIImage(named: "KyloC.png")!)
         let uberTop = TVButtonLayer(image: UIImage(named: "KyloE.png")!)
         tvButton.layers = [background, pattern, uberTop, top]
-        tvButton.parallaxIntensity = 1.0
+        tvButton.parallaxIntensity = 1
     }
 
     override func didReceiveMemoryWarning() {

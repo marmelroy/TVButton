@@ -21,31 +21,34 @@ let defaultParallaxIntensity: CGFloat = 1.0
 let highlightedScale: CGFloat = 1.22
 
 // Max scale delta
-let maxScaleDelta: CGFloat = 0.07
+let maxScaleDelta: CGFloat = 0.12
 
-// Max translation vlaue
-let maxTranslation: CGFloat = 2
+// Max translation value in x axis
+let maxTranslationX: CGFloat = 3.5
+
+// Max translation value in y axis
+let maxTranslationY: CGFloat = 2.5
 
 // A factor applied in the x axis on parallax intensity
-let parallaxIntensityXFactor: CGFloat = 0.5
+let parallaxIntensityXFactor: CGFloat = 0.3
 
 // A factor applied in the y axis on parallax intensity
-let parallaxIntensityYFactor: CGFloat = 0.7
+let parallaxIntensityYFactor: CGFloat = 0.2
 
 // A factor applied in the x axis on rotation
-let rotateXFactor: CGFloat = 20
+let rotateXFactor: CGFloat = 12
 
 // A factor applied in the y axis on rotation
-let rotateYFactor: CGFloat = 3
+let rotateYFactor: CGFloat = 14
 
 // A factor applied in the z axis on rotation
 let rotateZFactor: CGFloat = 9
 
 // Determines the size of the TVButton's shadow in comparison to the bounds
-let shadowFactor: CGFloat = 12
+let shadowFactor: CGFloat = 10
 
 // The scale of the specular shine
-let specularScale: CGFloat = 1.5
+let specularScale: CGFloat = 2.0
 
 // The scale of the specular shine
 let specularAlpha: CGFloat = 0.25
