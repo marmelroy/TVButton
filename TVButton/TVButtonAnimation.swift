@@ -81,16 +81,17 @@ internal class TVButtonAnimation {
                 tvButton.layer.transform = combinedTransform
                 tvButton.specularView.alpha = specularAlpha
                 tvButton.specularView.center = point
-                }, completion: nil)
-            for var i = 1; i < tvButton.containerView.subviews.count ; i++ {
-                let scale = 1 + maxScaleDelta*CGFloat(i)/CGFloat(tvButton.containerView.subviews.count)
-                let subview = tvButton.containerView.subviews[i]
-                if subview != tvButton.specularView {
-                    subview.contentMode = UIViewContentMode.Redraw
-                    subview.frame.size = CGSizeMake(tvButton.bounds.size.width*scale, tvButton.bounds.size.height*scale)
-                    subview.center = CGPointMake(tvButton.bounds.size.width/2 + xTranslation*CGFloat(i)*tvButton.parallaxIntensity*parallaxIntensityXFactor, tvButton.bounds.size.height/2 + yTranslation*CGFloat(i)*tvButton.parallaxIntensity*parallaxIntensityYFactor)
+                for var i = 1; i < tvButton.containerView.subviews.count ; i++ {
+                    let adjusted = i/2
+                    let scale = 1 + maxScaleDelta*CGFloat(adjusted/tvButton.containerView.subviews.count)
+                    let subview = tvButton.containerView.subviews[adjusted]
+                    if subview != tvButton.specularView {
+                        subview.contentMode = UIViewContentMode.Redraw
+                        subview.frame.size = CGSizeMake(tvButton.bounds.size.width*scale, tvButton.bounds.size.height*scale)
+                        subview.center = CGPointMake(tvButton.bounds.size.width/2 + xTranslation*CGFloat(adjusted)*tvButton.parallaxIntensity*parallaxIntensityXFactor, tvButton.bounds.size.height/2 + yTranslation*CGFloat(adjusted)*tvButton.parallaxIntensity*parallaxIntensityYFactor)
+                    }
                 }
-            }
+                }, completion: nil)
         }
     }
     

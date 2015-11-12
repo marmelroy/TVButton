@@ -18,13 +18,13 @@ let cornerRadius: CGFloat = 5
 let defaultParallaxIntensity: CGFloat = 1.0
 
 // The scaling on the TVButton when active
-let highlightedScale: CGFloat = 1.2
+let highlightedScale: CGFloat = 1.22
 
 // Max scale delta
-let maxScaleDelta: CGFloat = 0.1
+let maxScaleDelta: CGFloat = 0.07
 
 // Max translation vlaue
-let maxTranslation: CGFloat = 1
+let maxTranslation: CGFloat = 2
 
 // A factor applied in the x axis on parallax intensity
 let parallaxIntensityXFactor: CGFloat = 0.5
@@ -36,7 +36,7 @@ let parallaxIntensityYFactor: CGFloat = 0.7
 let rotateXFactor: CGFloat = 20
 
 // A factor applied in the y axis on rotation
-let rotateYFactor: CGFloat = 16
+let rotateYFactor: CGFloat = 3
 
 // A factor applied in the z axis on rotation
 let rotateZFactor: CGFloat = 9
@@ -48,4 +48,4 @@ let shadowFactor: CGFloat = 12
 let specularScale: CGFloat = 1.5
 
 // The scale of the specular shine
-let specularAlpha: CGFloat = 0.3
+let specularAlpha: CGFloat = 0.25
