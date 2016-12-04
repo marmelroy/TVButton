@@ -1,5 +1,9 @@
-source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, "8.0"
-use_frameworks!
 
-pod ‘TVButton’, :path => '../..'
+target 'Sample' do
+  use_frameworks!
+
+  # Pods for Sample
+  pod '‘TVButton’', :path => '../..'
+
+end
