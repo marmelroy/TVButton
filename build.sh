@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # **** Update me when new Xcode versions are released! ****
-PLATFORM="platform=iOS Simulator,OS=9.1,name=iPhone 6"
-SDK="iphonesimulator9.1"
+PLATFORM="platform=iOS Simulator,OS=10.1,name=iPhone 7"
+SDK="iphonesimulator"
 
 
 # It is pitch black.
@@ -19,7 +19,7 @@ MODE="$1"
 
 if [ "$MODE" = "build" ]; then
     echo "Building TVButton."
-    xctool \
+    xcodebuild \
         -project TVButton.xcodeproj \
         -scheme TVButton \
         -sdk "$SDK" \
@@ -35,7 +35,7 @@ if [ "$MODE" = "examples" ]; then
     for example in examples/*/; do
         echo "Building $example."
         pod install --project-directory=$example
-        xctool \
+        xcodebuild \
             -workspace "${example}Sample.xcworkspace" \
             -scheme Sample \
             -sdk "$SDK" \

@@ -38,7 +38,7 @@ Enjoy!
 ### Setting up with [CocoaPods](http://cocoapods.org/?q=TVButton)
 ```ruby
 source 'https://github.com/CocoaPods/Specs.git'
-pod 'TVButton', '~> 0.1'
+pod 'TVButton', '~> 1.0'
 ```
 
 ### Setting up with Carthage
