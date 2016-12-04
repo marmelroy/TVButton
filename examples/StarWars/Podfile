@@ -4,6 +4,6 @@ target 'Sample' do
   use_frameworks!
 
   # Pods for Sample
-  pod '‘TVButton’', :path => '../..'
+  pod 'TVButton', :path => '../..'
 
 end

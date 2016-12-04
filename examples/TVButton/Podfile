@@ -1,9 +1,9 @@
-platform :ios, "8.0"
+platform :ios, "9.3"
 
 target 'Sample' do
   use_frameworks!
 
   # Pods for Sample
-  pod '‘TVButton’', :path => '../..'
+  pod 'TVButton', :path => '../..'
 
 end
