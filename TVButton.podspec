@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "TVButton"
-  s.version          = "0.1.5"
+  s.version          = "1.0.0"
   s.summary          = "Apple TV style parallax icons as iOS UIButtons"
 
 # This description is used to generate tags and improve search results.
