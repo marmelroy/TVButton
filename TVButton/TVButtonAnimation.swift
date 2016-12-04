@@ -31,33 +31,33 @@ internal class TVButtonAnimation {
         }
         if let tvButton = button {
             self.highlightMode = true
-            let targetShadowOffset = CGSizeMake(0.0, tvButton.bounds.size.height/shadowFactor)
+            let targetShadowOffset = CGSize(width: 0.0, height: tvButton.bounds.size.height/shadowFactor)
             tvButton.layer.removeAllAnimations()
             CATransaction.begin()
             CATransaction.setCompletionBlock({ () -> Void in
                 tvButton.layer.shadowOffset = targetShadowOffset
             })
             let shaowOffsetAnimation = CABasicAnimation(keyPath: "shadowOffset")
-            shaowOffsetAnimation.toValue = NSValue(CGSize: targetShadowOffset)
+            shaowOffsetAnimation.toValue = NSValue(cgSize: targetShadowOffset)
             shaowOffsetAnimation.duration = animationDuration
-            shaowOffsetAnimation.removedOnCompletion = false
+            shaowOffsetAnimation.isRemovedOnCompletion = false
             shaowOffsetAnimation.fillMode = kCAFillModeForwards
             shaowOffsetAnimation.timingFunction = CAMediaTimingFunction(name: "easeOut")
-            tvButton.layer.addAnimation(shaowOffsetAnimation, forKey: "shadowOffset")
+            tvButton.layer.add(shaowOffsetAnimation, forKey: "shadowOffset")
             CATransaction.commit()
             let shadowOpacityAnimation = CABasicAnimation(keyPath: "shadowOpacity")
             shadowOpacityAnimation.toValue = 0.6
             shadowOpacityAnimation.duration = animationDuration
-            shadowOpacityAnimation.removedOnCompletion = false
+            shadowOpacityAnimation.isRemovedOnCompletion = false
             shadowOpacityAnimation.fillMode = kCAFillModeForwards
             shadowOpacityAnimation.timingFunction = CAMediaTimingFunction(name: "easeOut")
-            tvButton.layer.addAnimation(shadowOpacityAnimation, forKey: "shadowOpacityAnimation")
+            tvButton.layer.add(shadowOpacityAnimation, forKey: "shadowOpacityAnimation")
             CATransaction.commit()
         }
     }
     
     // Movement continues
-    func processMovement(point: CGPoint){
+    func processMovement(_ point: CGPoint){
         if (highlightMode == false) {
             return
         }
@@ -84,28 +84,28 @@ internal class TVButtonAnimation {
             let targetScaleTransform = CATransform3DMakeScale(highlightedScale, highlightedScale, highlightedScale)
             let combinedTransform = CATransform3DConcat(combinedRotateTranslateTransform, targetScaleTransform)
             
-            UIView.animateWithDuration(animationDuration, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
+            UIView.animate(withDuration: animationDuration, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: { () -> Void in
                 tvButton.layer.transform = combinedTransform
                 tvButton.specularView.alpha = specularAlpha
                 tvButton.specularView.center = point
-                for var i = 1; i < tvButton.containerView.subviews.count ; i++ {
+                for i in 1 ..< tvButton.containerView.subviews.count {
                     let adjusted = i/2
                     let scale = 1 + maxScaleDelta*CGFloat(adjusted/tvButton.containerView.subviews.count)
                     let subview = tvButton.containerView.subviews[i]
                     if subview != tvButton.specularView {
-                        subview.contentMode = UIViewContentMode.Redraw
-                        subview.frame.size = CGSizeMake(tvButton.bounds.size.width*scale, tvButton.bounds.size.height*scale)
+                        subview.contentMode = UIViewContentMode.redraw
+                        subview.frame.size = CGSize(width: tvButton.bounds.size.width*scale, height: tvButton.bounds.size.height*scale)
                     }
                 }
 
                 }, completion: nil)
-            UIView.animateWithDuration(0.16, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
-                for var i = 1; i < tvButton.containerView.subviews.count ; i++ {
+            UIView.animate(withDuration: 0.16, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: { () -> Void in
+                for i in 1 ..< tvButton.containerView.subviews.count {
                     let subview = tvButton.containerView.subviews[i]
                     let xParallax = tvButton.parallaxIntensity*parallaxIntensityXFactor
                     let yParallax = tvButton.parallaxIntensity*parallaxIntensityYFactor
                     if subview != tvButton.specularView {
-                        subview.center = CGPointMake(tvButton.bounds.size.width/2 + xTranslation*CGFloat(i)*xParallax, tvButton.bounds.size.height/2 + yTranslation*CGFloat(i)*0.3*yParallax)
+                        subview.center = CGPoint(x: tvButton.bounds.size.width/2 + xTranslation*CGFloat(i)*xParallax, y: tvButton.bounds.size.height/2 + yTranslation*CGFloat(i)*0.3*yParallax)
                     }
                 }
             }, completion: nil)
@@ -119,7 +119,7 @@ internal class TVButtonAnimation {
             return
         }
         if let tvButton = button {
-            let targetShadowOffset = CGSizeMake(0.0, shadowFactor/3)
+            let targetShadowOffset = CGSize(width: 0.0, height: shadowFactor/3)
             let targetScaleTransform = CATransform3DMakeScale(1.0, 1.0, 1.0)
             tvButton.specularView.layer.removeAllAnimations()
             CATransaction.begin()
@@ -129,27 +129,27 @@ internal class TVButtonAnimation {
                 self.highlightMode = false
             })
             let shaowOffsetAnimation = CABasicAnimation(keyPath: "shadowOffset")
-            shaowOffsetAnimation.toValue = NSValue(CGSize: targetShadowOffset)
+            shaowOffsetAnimation.toValue = NSValue(cgSize: targetShadowOffset)
             shaowOffsetAnimation.duration = animationDuration
             shaowOffsetAnimation.fillMode = kCAFillModeForwards
-            shaowOffsetAnimation.removedOnCompletion = false
+            shaowOffsetAnimation.isRemovedOnCompletion = false
             shaowOffsetAnimation.timingFunction = CAMediaTimingFunction(name: "easeOut")
-            tvButton.layer.addAnimation(shaowOffsetAnimation, forKey: "shadowOffset")
+            tvButton.layer.add(shaowOffsetAnimation, forKey: "shadowOffset")
             let scaleAnimation = CABasicAnimation(keyPath: "transform")
-            scaleAnimation.toValue = NSValue(CATransform3D: targetScaleTransform)
+            scaleAnimation.toValue = NSValue(caTransform3D: targetScaleTransform)
             scaleAnimation.duration = animationDuration
-            scaleAnimation.removedOnCompletion = false
+            scaleAnimation.isRemovedOnCompletion = false
             scaleAnimation.fillMode = kCAFillModeForwards
             scaleAnimation.timingFunction = CAMediaTimingFunction(name: "easeOut")
-            tvButton.layer.addAnimation(scaleAnimation, forKey: "scaleAnimation")
+            tvButton.layer.add(scaleAnimation, forKey: "scaleAnimation")
             CATransaction.commit()
-            UIView.animateWithDuration(animationDuration, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
-                tvButton.transform = CGAffineTransformIdentity
+            UIView.animate(withDuration: animationDuration, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: { () -> Void in
+                tvButton.transform = CGAffineTransform.identity
                 tvButton.specularView.alpha = 0.0
-                for var i = 0; i < tvButton.containerView.subviews.count ; i++ {
+                for i in 0 ..< tvButton.containerView.subviews.count {
                     let subview = tvButton.containerView.subviews[i]
-                    subview.frame.size = CGSizeMake(tvButton.bounds.size.width, tvButton.bounds.size.height)
-                    subview.center = CGPointMake(tvButton.bounds.size.width/2, tvButton.bounds.size.height/2)
+                    subview.frame.size = CGSize(width: tvButton.bounds.size.width, height: tvButton.bounds.size.height)
+                    subview.center = CGPoint(x: tvButton.bounds.size.width/2, y: tvButton.bounds.size.height/2)
                 }
                 }, completion:nil)
         }
@@ -157,7 +157,7 @@ internal class TVButtonAnimation {
     
     // MARK: Convenience
     
-    func degreesToRadians(value:CGFloat) -> CGFloat {
+    func degreesToRadians(_ value:CGFloat) -> CGFloat {
         return value * CGFloat(M_PI) / 180.0
     }
 
