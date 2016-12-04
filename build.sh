@@ -24,7 +24,7 @@ if [ "$MODE" = "build" ]; then
         -scheme TVButton \
         -sdk "$SDK" \
         -destination "$PLATFORM" \
-        build test
+        build
     trap - EXIT
     exit 0
 fi
@@ -40,7 +40,7 @@ if [ "$MODE" = "examples" ]; then
             -scheme Sample \
             -sdk "$SDK" \
             -destination "$PLATFORM" \
-            build test
+            build
     done
     trap - EXIT
     exit 0
